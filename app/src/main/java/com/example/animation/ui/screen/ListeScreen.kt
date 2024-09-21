@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -57,6 +59,18 @@ fun ProductListWithLazyRow() {
         }
     }
 }
+@Composable
+fun ProductListWithLazyGrid() {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2), // Two columns
+        content = {
+            items(100) { index ->
+                ProductItem("Product $index", "Description of product $index")
+            }
+        }
+    )
+}
+
 
 @Preview (showBackground = true)
 @Composable
@@ -73,4 +87,9 @@ fun ProductListWithLazyColumnPreview() {
 @Composable
 fun ProductListWithLazyRowPreview() {
     ProductListWithLazyRow()
+}
+@Preview(showBackground = true)
+@Composable
+fun ProductListWithLazyGridPreview() {
+    ProductListWithLazyGrid()
 }
